@@ -91,7 +91,7 @@ var game = {
         clearInterval(timer);
         game.unanswered++;
         $('#subwrapper').html('<h2>Out of Time!</h2>');
-        $('#subwrapper').append('<h3>The Correct Answer Was: '+questions[game.currentQuestion].correctAnswer+'</h3>);
+        $('#subwrapper').append('<h3>The Correct Answer Was: '+questions[game.currentQuestion].correctAnswer+'</h3>');
             if(game.currentQuestion==questions.length-1){
             setTimeout(game.results, 3 * 1000);
         } else {
@@ -102,9 +102,9 @@ var game = {
     results: function () {
         clearInterval(timer);
         $('#subwrapper').html("<h2>All Done!</h2>");
-        $('#subwrapper').append("<h3>Correct: "+game.correct"</h3>");
-        $('#subwrapper').append("<h3>Incorrect: "+game.incorrect"</h3>");
-        $('#subwrapper').append("<h3>Unanswered: "+game.unanswered"</h3>");
+        $('#subwrapper').append("<h3>Correct: "+game.correct+"</h3>");
+        $('#subwrapper').append("<h3>Incorrect: "+game.incorrect+"</h3>");
+        $('#subwrapper').append("<h3>Unanswered: "+game.unanswered+"</h3>");
         $('#subwrapper').append("<button id='reset'>Reset</button>");
     },
 
@@ -135,14 +135,14 @@ var game = {
         game.incorrect++;
         $('#subwrapper').html('<h2>You Got It Wrong!</h2>');
         $('#subwrapper').append('<h3>The Correct Answer Was: '+questions[game.
-            currentQuestion].correctAnswer+</h3>);
+            currentQuestion].correctAnswer+'</h3>');
         if(game.currentQuestion==questions.length-1) {
             setTimeout(game.results, 3 * 1000);
         } else {
-            setTimeout(game.nextQuestion,3*1000);
-
-        },
-    reset: function () {
+            setTimeout(game.nextQuestion, 3 * 1000);
+        }
+    },
+    reset: function() {
         game.currentQuestion = 0;
         game.counter = 0;
         game.correct = 0;
@@ -177,21 +177,3 @@ var game = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.getElementById("demo").innerHTML = cars;
-
-for (i = 0; i < cars.length; i++) {
-  text += cars[i] + "<br>";
-}
