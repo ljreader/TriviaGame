@@ -3,8 +3,8 @@ $('#start').on('click',function(){
     game.loadQuestion();
 })
 
-$(document).on('click','.answer-button',function(e){
-    game.clicked(e);
+$(document).on('click','.answer-button',function(Neo){
+    game.clicked(Neo);
 })
 
 $(document).on('click','#reset',function(){
@@ -12,48 +12,49 @@ $(document).on('click','#reset',function(){
 })
 var questions = [{
 // --- Matrix Trivia--- //
-    questions:"Which of these is not a scripting language?",
-    answers: ["Lasso", "Ruby", "BeanShell", "PostScript"],
-    correctAnswer: "PostScript"
+    question:"Which of these characters is not a member of the Resistance?",
+    answers: ["Neo", "Spoon boy", "Trinity", "Morpheus"],
+    correctAnswer: "Spoon boy"
 }, {
 
-    questions: "Which of these is not a scripting language?",
-    answers: ["Lasso", "Ruby", "BeanShell", "PostScript"],
-    correctAnswer: "PostScript"
+    question: "The Matrix was the first film to employ this groundbreaking" +
+    " type of cinematography?",
+    answers: ["Lasso", "Digital", "Long-shot", "Bullet-time"],
+    correctAnswer: "Bullet-time"
 }, {
 
-    questions: "Which of these is not a scripting language?",
-    answers: ["Lasso", "Ruby", "BeanShell", "PostScript"],
-    correctAnswer: "PostScript"
+    question: "Which of these charcters is not a Program?",
+    answers: ["Agent Thompson", "Agent Smith", "The Architect", "The Keymaker"],
+    correctAnswer: "The Keymaker"
 }, {
 
-    questions: "Which of these is not a scripting language?",
-    answers: ["Lasso", "Ruby", "BeanShell", "PostScript"],
-    correctAnswer: "PostScript"
+    question: "Which of these characters is not an Exile?",
+    answers: ["Rama Kandra", "Chuang Tzu", "Persephone", "The Elements"],
+    correctAnswer: "Chuang Tzu"
 }, {
 
-    questions: "Which of these is not a scripting language?",
-    answers: ["Lasso", "Ruby", "BeanShell", "PostScript"],
-    correctAnswer: "PostScript"
+    question: "Which color of pill did Neo ingest?",
+    answers: ["Red", "Orange", "Yellow", "Blue"],
+    correctAnswer: "Red"
 }, {
 
-    questions: "Which of these is not a scripting language?",
-    answers: ["Lasso", "Ruby", "BeanShell", "PostScript"],
-    correctAnswer: "PostScript"
+    question: "The Matrix was release in what year?",
+    answers: ["1997", "1998", "1999", "2000"],
+    correctAnswer: "1999"
 }, {
 
-    questions: "Which of these is not a scripting language?",
-    answers: ["Lasso", "Ruby", "BeanShell", "PostScript"],
-    correctAnswer: "PostScript"
+    question: "Who are the Resistance fighters searching for?",
+    answers: ["The Keymaker", "The One", "BeanShell", "The Oracle"],
+    correctAnswer: "The Oracle"
 }, {
 
-    questions: "Which of these is not a scripting language?",
-    answers: ["Lasso", "Ruby", "BeanShell", "PostScript"],
-    correctAnswer: "PostScript"
+    question: "Which ship is captained by Morpheus?",
+    answers: ["Nebuchadnezzar", "Icarus", "Vigilant", "Mjolnir"],
+    correctAnswer: "Nebuchadnezzar"
 }];
-
+// --- variables/functions ---//
 var game = {
-    questions:questions,
+    questions: questions,
     currentQuestion:0,
     counter:30,
     correct:0,
@@ -63,19 +64,22 @@ var game = {
         game.counter--;
         $('#counter').html(game.counter);
         if(game.counter<=0){
-            console.log("TIME UP!");
+            console.log("Times up!");
             game.timeUp();
         }
     },
+
     loadQuestion: function(){
         timer = setInterval(game.countdown,1000);
         $('#subwrapper').html("<h2>Time Remaining: <span id='counter'>30</span> Seconds</h2>");
         $('#subwrapper').append('<h2>'+questions[game.currentQuestion].question+'</h2>');
         for(var i=0;i<questions[game.currentQuestion].answers.length;i++){
-            $('#subwrapper').append('<button class="answer-button" id="button-'+i+'" data-name="'+questions[game.currentQuestion].answers[i]
+            $('#subwrapper').append('<button class="answer-button" id="button-' 
+                +i+'"data-name="'+questions[game.currentQuestion].answers[i]
                 +'">'+questions[game.currentQuestion].answers[i]+'</button>');
         }
     },
+
     nextQuestion: function(){
         game.counter = 30;
         $('#counter').html(game.counter);
@@ -86,47 +90,51 @@ var game = {
     timeUp: function(){
         clearInterval(timer);
         game.unanswered++;
-        $('#subwrapper').html('<h2>Out of Time!</h2>');
-        $('#subwrapper').append('<h3>The Correct Answer Was: '+questions[game.currentQuestion].correctAnswer+'</h3>');
+        $('#subwrapper').html('<h2>畄 Times up, The Matrix won this one! 畄</h2>');
+        $('#subwrapper').append('<h3>甴 The Correct Answer Was: '+questions[game.currentQuestion].correctAnswer+'</h3>');
         if(game.currentQuestion==questions.length-1){
             setTimeout(game.results,3*1000);
         } else {
             setTimeout(game.nextQuestion,3*1000);
         }
     },
+
     results: function(){
         clearInterval(timer);
-        $('#subwrapper').html("<h2>All Done!</h2>");
+        $('#subwrapper').html("<h2>甾 Well Done! 甾</h2>");
         $('#subwrapper').append("<h3>Correct: "+game.correct+"</h3>");
         $('#subwrapper').append("<h3>Incorrect: "+game.incorrect+"</h3>");
         $('#subwrapper').append("<h3>Unanswered: "+game.unanswered+"</h3>");
-        $('#subwrapper').append("<button id='reset'>Reset</button>");
+        $('#subwrapper').append("<button id='reset'>Try again?</button>");
     },
-    clicked: function (e){
+
+    clicked: function (Neo){
         clearInterval(timer);
-        if($(e.target).data("name")==questions[game.currentQuestion].correctAnswer){
+        if($(Neo.target).data("name")==questions[game.currentQuestion].correctAnswer){
             game.answeredCorrectly();
         } else {
             game.answeredIncorrectly();
         }
     },
+
     answeredCorrectly: function(){
         console.log("Good Answer!");
         clearInterval(timer);
         game.correct++;
-        $('#subwrapper').html('<h2>You Got It Right!</h2>');
+        $('#subwrapper').html('<h2>甹 Correct! 甹</h2>');
         if(game.currentQuestion==questions.length-1){
             setTimeout(game.results,3*1000);
         } else {
             setTimeout(game.nextQuestion,3*1000);
         }
     },
+
     answeredIncorrectly: function(){
         console.log("Wrong!");
         clearInterval(timer);
         game.incorrect++;
-        $('#subwrapper').html('<h2>You Got It Wrong!</h2>');
-        $('#subwrapper').append('<h3>The Correct Answer Was: '+questions[game.
+        $('#subwrapper').html('<h2>界 Incorrect! 界</h2>');
+        $('#subwrapper').append('<h3>甴 The Correct Answer Was: '+questions[game.
             currentQuestion].correctAnswer+'</h3>');
         if(game.currentQuestion==questions.length-1){
             setTimeout(game.results, 3 * 1000);
@@ -134,6 +142,7 @@ var game = {
             setTimeout(game.nextQuestion, 3 * 1000);
         }
     },
+
     reset: function() {
         game.currentQuestion = 0;
         game.counter = 0;
@@ -143,7 +152,6 @@ var game = {
         game.loadQuestion();
     }
 }
-
 // --- Matrix Background --- //
 var c = document.getElementById("c");
 var ctx = c.getContext("2d");

@@ -1,3 +1,29 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    font-family: "Droid Sans";
+    font-size: 50px;
+    text-align-all: center;
+}
+
+button {
+    background-color: #17119c; /* Blue */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius:35%;
+}
+
+span {
+    text-align: center;
+}
 
 canvas {
     width: 100vw;
@@ -8,3 +34,62 @@ canvas {
     left: 0;
     z-index: -9999;
 }
+
+h1 {
+    font-family: "Droid Sans";
+    font-size: 70px;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    font-family: "Droid Sans";
+    font-size: 75%;
+    color: white;
+    text-align: left;
+
+}
+
+h3 {
+    font-family: "Droid Sans";
+    font-size: 75%;
+    color: white;
+    text-align: left;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0px;
+    font-size: 16px;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+    width: 100%;
+    color: #00ff00;
+    background-color: #000000;
+    border-top-style: solid;
+    border-top-color: #ffffff;
+    border-top-width: 8px;
+}
+
+.footer .small {
+    font-size: 75%;
+}
+
+.footer a:link {
+    text-decoration: none;
+    color: #00ff00;
+}
+
+#gh-link {
+    font-size: 1.5em;
+}
+
+.footer a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.footer a:hover {
+    filter: drop-shadow(0.063em 0.063em 0em #00ff00);
+}
+
