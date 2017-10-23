@@ -19,7 +19,7 @@ var questions = [{
 
     question: "The Matrix was the first film to employ this groundbreaking" +
     " type of cinematography?",
-    answers: ["Lasso", "Digital", "Long-shot", "Bullet-time"],
+    answers: ["Lasso", "Dolby Digital", "Long-shot", "Bullet-time"],
     correctAnswer: "Bullet-time"
 }, {
 
@@ -38,7 +38,7 @@ var questions = [{
     correctAnswer: "Red"
 }, {
 
-    question: "The Matrix was release in what year?",
+    question: "The Matrix was released in what year?",
     answers: ["1997", "1998", "1999", "2000"],
     correctAnswer: "1999"
 }, {
